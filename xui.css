@@ -1,0 +1,306 @@
+/* ========================================================================= */
+/* [XUI Layout] */
+/* ========================================================================= */
+
+.xui-fit > * {
+  width: 100%;
+  height: 100%;
+}
+
+.xui-hbox { display: flex; flex-direction: row; }
+.xui-hbox > * {
+  box-sizing: border-box;
+  flex-shrink: 0;
+}
+
+.xui-vbox { display: flex; flex-direction: column; }
+.xui-vbox > * {
+  box-sizing: border-box;
+  width: 100%;
+  flex-shrink: 0;
+}
+
+.xui-flex { flex: 1 0; }
+
+.xui-grid { display: grid; }
+
+/* ========================================================================= */
+/* [XUI Colors] */
+/* ========================================================================= */
+
+:root {
+  --base-background-root        : #1b1e20;
+  --base-background-content     : #363b40;
+  --base-background-input       : #262a2e;
+  --base-background-hover       : #272b2f;
+  --base-background-button      : #3e4348;
+  --base-background-button-2    : #272a2d;
+  --base-background-button-hov  : #464b50;
+  --base-background-button-hov-2: #292c2f;
+  --base-background-click       : #464b50;
+  --base-background-disabled    : #5d6165;
+  --base-background-panel       : #363b40;
+  --base-background-menu        : #262a2e;
+  --base-background-menu-hover  : #3e4347;
+
+  --base-text-plain             : #D0D0D0;
+  --base-text-placeholder       : rgb(79, 85, 90);
+  --base-text-focus             : #E0E0E0;
+  --base-text-click             : #bdc1c5;
+  --base-text-disabled          : #A0A0A0;
+  --base-text-panel             : #FFFFFF;
+
+  --base-border-plain           : #212427;
+  --base-border-hover           : #000000;
+  --base-border-focus           : #000000;
+  --base-border-click           : #5d646b;
+  --base-border-disabled        : #5d6165;
+  --base-border-button          : #212225;
+  --base-border-panel           : #3d4349;
+
+  --button-text-plain           : var(--base-text-plain);
+  --button-text-hover           : var(--base-text-hover);
+  --button-text-focus           : var(--base-text-focus);
+  --button-text-click           : var(--base-text-click);
+  --button-text-disabled        : var(--base-text-disabled);
+
+  --button-border-plain         : var(--base-border-button);
+  --button-border-hover         : var(--base-border-button);
+  --button-border-focus         : #000000;
+  --button-border-click         : #000000;
+  --button-border-disabled      : var(--base-border-disabled);
+
+  --button-background-plain     : var(--base-background-button);
+  --button-background-plain-2   : var(--base-background-button-2);
+  --button-background-hover     : var(--base-background-button-hov);
+  --button-background-hover-2   : var(--base-background-button-hov-2);
+  --button-background-focus     : var(--base-background-button-hov);
+  --button-background-click     : var(--base-background-click);
+  --button-background-disabled  : var(--base-background-disabled);
+
+  --input-text-plain            : var(--base-text-plain);
+  --input-text-hover            : var(--base-text-hover);
+  --input-text-focus            : var(--base-text-focus);
+
+  --input-border-plain          : var(--base-border-plain);
+  --input-border-hover          : var(--base-border-hover);
+  --input-border-focus          : var(--base-border-focus);
+
+  --input-background-plain      : var(--base-background-input);
+  --input-background-hover      : var(--base-background-hover);
+  --input-background-focus      : var(--base-background-input);
+
+  --tool-text-plain             : var(--base-text-plain);
+  --tool-text-hover             : var(--base-text-plain);
+  --tool-text-click             : var(--base-text-click);
+
+  --tool-border-plain           : transparent;
+  --tool-border-hover           : var(--base-border-hover);
+  --tool-border-click           : var(--base-border-click);
+
+  --tool-background-plain       : var(--base-background-input);
+  --tool-background-hover       : var(--base-background-menu-hover);
+  --tool-background-click       : var(--base-background-click);
+}
+
+/* ========================================================================= */
+/* [XUI Components] */
+/* ========================================================================= */
+
+.xui-root,
+.xui-div,
+.xui-content,
+.xui-component,
+.xui-text,
+.xui-button,
+.xui-input,
+.xui-check,
+.xui-radio,
+.xui-toolbar,
+.xui-toolbutton,
+.xui-toolseparator,
+.xui-menubar,
+.xui-menuitem,
+.xui-panel,
+.xui-head,
+.xui-area,
+.xui-listview,
+.xui-listitem {
+  box-sizing: border-box; /* Border-box makes it easier to layout stuff. */
+  overflow: hidden;       /* Hidden by default, updated by containers.   */
+}
+
+.xui-root {
+  width: 100%;
+  height: 100%;
+
+  color: var(--base-text-plain);
+  background: var(--base-background-root);
+}
+
+.xui-content, .xui-area {
+  background: var(--base-background-content);
+}
+
+.xui-text {
+  padding: 3px 5px;
+}
+
+.xui-button {
+  cursor: hand;
+  user-select: none;
+}
+
+.xui-button {
+  color: var(--button-text-plain);
+  border: 1px solid var(--button-border-plain);
+  background: linear-gradient(to bottom, var(--button-background-plain) 0%, var(--button-background-plain-2) 100%);
+  box-shadow: inset 0px 0px 14px rgba(123, 136, 150, 0.3);
+}
+
+.xui-button:hover {
+  color: var(--button-text-hover);
+  border: 1px solid var(--button-border-hover);
+  background: linear-gradient(to bottom, var(--button-background-hover) 0%, var(--button-background-hover-2) 100%);
+}
+
+.xui-button:focus {
+  color: var(--button-text-focus);
+  border: 1px solid var(--button-border-focus);
+  background: linear-gradient(to bottom, var(--button-background-hover) 0%, var(--button-background-hover-2) 100%);
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.7);
+}
+
+.xui-button:active {
+  color: var(--button-text-click);
+  border: 1px solid var(--button-border-click);
+  background: var(--button-background-plain-2);
+}
+
+.xui-input {
+  padding: 3px 4px;
+}
+
+.xui-input {
+  color: var(--input-text-plain);
+  border: 1px solid var(--input-border-plain);
+  background: var(--input-background-plain);
+}
+
+.xui-input:hover {
+  color: var(--input-text-hover);
+  border: 1px solid var(--input-border-hover);
+  background: var(--input-background-hover);
+}
+
+.xui-input:focus {
+  color: var(--input-text-focus);
+  border: 1px solid var(--input-border-focus);
+  background: var(--input-background-focus);
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.7);
+
+  border: 1px solid #67b6d6;
+  box-shadow: 0px 0px 4px rgb(142, 175, 236);
+}
+
+input::placeholder {
+  color: var(--base-text-placeholder);
+  font-style: italic;
+}
+
+.xui-check {
+  cursor: hand;
+}
+
+.xui-radio {
+  cursor: hand;
+}
+
+.xui-toolbar {
+  padding: 4px 4px;
+}
+
+.xui-toolbar {
+  color: var(--tool-text-plain);
+  background: var(--tool-background-plain);
+}
+
+.xui-toolbutton {
+  border: 1px solid var(--tool-border-plain);
+  color: inherit;
+  background: inherit;
+
+  cursor: hand;
+  user-select: none;
+}
+
+.xui-toolbutton:hover {
+  color: var(--tool-text-hover);
+  border: 1px solid var(--tool-background-hover);
+}
+
+.xui-toolbutton:active {
+  color: var(--tool-text-click);
+  border: 1px solid var(--tool-border-click);
+  background: var(--tool-background-click);
+}
+
+.xui-panel {
+  border: solid 1px var(--base-border-panel);
+}
+
+.xui-panel > .xui-head {
+  width: 100%;
+  user-select: none;
+
+  background: var(--base-background-panel);
+  color: var(--base-text-panel);
+}
+
+.xui-menubar {
+  background: var(--base-background-menu);
+}
+
+.xui-menuitem {
+  border: 1px solid transparent;
+  color: inherit;
+  background: inherit;
+
+  cursor: hand;
+  user-select: none;
+}
+
+.xui-menuitem:hover {
+  border: 1px solid var(--base-background-menu-hover);
+  color: var(--base-text-focus);
+  background: var(--base-background-menu-hover);
+}
+
+.xui-menuitem:active {
+  border: 1px solid var(--base-background-menu-hover);
+  color: var(--base-text-focus);
+  background: var(--base-background-menu-hover);
+}
+
+.xui-listview {
+  cursor: default;
+  color: var(--input-text-plain);
+  border: 1px solid var(--input-border-plain);
+  background: var(--input-background-plain);
+}
+
+.xui-listview:focus {
+  border: 1px solid #67b6d6;
+  box-shadow: 0px 0px 4px rgb(142, 175, 236);
+}
+
+.xui-listitem {
+  border: 1px solid transparent;
+}
+
+.xui-listitem.xui-active {
+  border: 1px solid #fff;
+  background: #41748a;
+}
+
+.xui-hidden { display: none !important; }

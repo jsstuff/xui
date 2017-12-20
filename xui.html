@@ -1,0 +1,150 @@
+<html>
+<head>
+  <link href="./reset.css" rel="stylesheet" />
+  <link href="./xui.css" rel="stylesheet" />
+  <script src="./xmo.js"></script>
+  <script src="./xui.js"></script>
+</head>
+<body id="page"></body>
+
+<script>
+(function() {
+  "use strict";
+
+  const radioGroup = new xui.RadioGroup();
+  const root = xui.new({
+    type: "root",
+    class: "x",
+    layout: {
+      type: "vbox",
+      gap: 10
+    },
+    padding: 10,
+    children: [
+      {
+        type: "panel",
+        text: "MenuBar",
+        padding: 2,
+        children: [
+          {
+            type: "menubar",
+            children: [
+              {
+                type: "menuitem",
+                text: "Menu1",
+                children: [
+                  { type: "menuitem", text: "Submenu1" },
+                  { type: "menuitem", text: "Submenu2" },
+                  { type: "menuitem", text: "Submenu3" },
+                  { type: "menuitem", text: "Submenu4" },
+                  { type: "menuitem", text: "Submenu5" }
+                ]
+              },
+              {
+                type: "menuitem",
+                text: "Menu2",
+                children: [
+                  { type: "menuitem", text: "Submenu1" },
+                  { type: "menuitem", text: "Submenu2" },
+                  { type: "menuitem", text: "Submenu3" },
+                  { type: "menuitem", text: "Submenu4" },
+                  { type: "menuitem", text: "Submenu5" }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        type: "panel",
+        text: "ToolBar",
+        padding: 2,
+        children: [
+          {
+            type: "toolbar",
+            children: [
+              { type: "toolbutton", text: "Tool1" },
+              { type: "toolbutton", text: "Tool2" }
+            ]
+          }
+        ]
+      },
+      {
+        type: "panel",
+        text: "Grid Layout (collapsible)",
+        collapsible: true,
+        padding: 2,
+        layout: {
+          type: "grid",
+          rowGap: 2,
+          columnGap: 2,
+          columnCount: 2,
+          justify: "stretch",
+          alignment: "center"
+        },
+        children: [
+          { type: "button"   , text : "Button1" },
+          { type: "button"   , text : "Button2" },
+          { type: "button"   , text : "Button3" },
+          { type: "button"   , text : "Button4" },
+          { type: "button"   , text : "Button5" },
+          { type: "textfield", placeholder: "Write something..." },
+          { type: "text"     , text: "Some Text" },
+          { type: "checkbox" , value: true, text: "CheckBox1" },
+          { type: "text"     , text: "Some Text" },
+          { type: "checkbox" , value: false, html: "<b>CheckBox2 <span style='color: #aff;'>Rich</span></b>" },
+          { type: "text"     , text: "Some Text" },
+          { type: "checkbox" , value: 2, text: "CheckBox3 indeterminate" },
+          { type: "text"     , text: "Some text" },
+          { type: "radiobox" , value: true, text: "RadioBox1", radioGroup: radioGroup },
+          { type: "text"     , text: "Some text" },
+          { type: "radiobox" , value: false, text: "RadioBox2", radioGroup: radioGroup }
+        ]
+      },
+      {
+        type: "panel",
+        text: "HBox Layout (collapsible)",
+        collapsible: true,
+        layout: {
+          type: "hbox",
+          justify: "stretch",
+          gap: 2
+        },
+        padding: 2,
+        children: [
+          { type: "button"   , text : "Button1" },
+          { type: "button"   , text : "Button2" },
+          { type: "button"   , text : "Button3" },
+          { type: "button"   , text : "Button4" },
+          { type: "button"   , text : "Button5" },
+          { type: "textfield", value: "Some Input" }
+        ]
+      },
+      {
+        type: "panel",
+        text: "ListView (collapsible)",
+        collapsible: true,
+        layout: {
+          type: "vbox",
+          gap: 2
+        },
+        padding: 2,
+        children: [
+          {
+            type: "listview",
+            as: "$list",
+            height: 250
+          }
+        ]
+      }
+    ]
+  });
+
+  for (var i = 0; i < 100; i++) {
+    root.$list.append(xui.new({ type: "listitem", text: `Item${i}` }));
+  }
+
+  root.attachToBody();
+})();
+</script>
+</html>
