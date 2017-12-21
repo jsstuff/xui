@@ -2346,6 +2346,11 @@ const CheckBox = xmo({
     }
   },
 
+  $onDblClick(event) {
+    event.preventDefault();
+    event.stopPropagation();
+  },
+
   getValue() { return this.$input.getValue(); },
   setValue(value) { this.$input.setValue(value); }
 });
