@@ -1,4 +1,4 @@
-// xui <https://github.com/exjs/xui>
+// xui <https://github.com/jsstuff/xui>
 (function() {
 "use strict";
 
